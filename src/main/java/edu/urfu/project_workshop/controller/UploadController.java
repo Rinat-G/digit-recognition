@@ -29,8 +29,8 @@ public class UploadController {
         if (!file.isEmpty()) {
 
             String originalFilename = file.getOriginalFilename();
-            String fileBaseName = FilenameUtils.getBaseName(originalFilename);
-            String fileExtension = FilenameUtils.getExtension(originalFilename);
+//            String fileBaseName = FilenameUtils.getBaseName(originalFilename);
+//            String fileExtension = FilenameUtils.getExtension(originalFilename);
             String fileName = FilenameUtils.getName(originalFilename);
 
             try {
@@ -38,7 +38,7 @@ public class UploadController {
 
                 BufferedOutputStream stream = new BufferedOutputStream(
                         new FileOutputStream(
-                                new File( fileBaseName + "-uploaded." + fileExtension)));
+                                new File( fileName)));
                 stream.write(bytes);
                 stream.close();
                 return "Загружен файл: " + fileName;
