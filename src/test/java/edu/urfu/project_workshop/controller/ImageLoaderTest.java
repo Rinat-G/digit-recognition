@@ -19,7 +19,9 @@ public class ImageLoaderTest {
     public void loaderCropTest() throws IOException {
         File imgFile = new File(TEMP_DIR + "drawn-2018-8-23-18.41.55.png");
         NativeImageLoader loader = new NativeImageLoader(28, 28, 1, true);
-        INDArray imageArray = loader.asRowVector(imgFile);
+//        ImageWritable imageWritable = loader.asWritable(imgFile);
+
+        INDArray imageArray = loader.asMatrix(imgFile);
 
         Java2DNativeImageLoader java2DNativeImageLoader = new Java2DNativeImageLoader(28, 28, 1);
         BufferedImage bufferedImage = java2DNativeImageLoader.asBufferedImage(imageArray);

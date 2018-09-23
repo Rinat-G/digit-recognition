@@ -51,7 +51,7 @@ public class PredictController {
     public String predictPost(
             @RequestParam("data") String data,
             @RequestParam("name") String name) {
-        System.out.println(data);
+        System.out.println("На /predict контроллер получены данные: " + data);
 
         String base64Image = data.split(",")[1];
         byte[] imageBytes = DatatypeConverter.parseBase64Binary(base64Image);

@@ -1,6 +1,7 @@
 package edu.urfu.project_workshop.neural.convolution;
 
 import org.datavec.image.loader.NativeImageLoader;
+import org.datavec.image.transform.LargestBlobCropTransform;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
@@ -18,8 +19,10 @@ public class MnistClassifierPredictor {
 
 
     public int predictSingleImage(File file) throws IOException {
+        LargestBlobCropTransform largestBlobCropTransform = new LargestBlobCropTransform();
 
-        NativeImageLoader loader = new NativeImageLoader(28, 28, 1, true);
+
+        NativeImageLoader loader = new NativeImageLoader(28, 28, 1, false);
         INDArray image = loader.asRowVector(file);
         ImagePreProcessingScaler scaler = new ImagePreProcessingScaler(1, 0); //reverse for white-black images because model trained on black white date set
         scaler.transform(image);

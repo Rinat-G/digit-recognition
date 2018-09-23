@@ -13,19 +13,29 @@
 <!--<br>-->
 <!--<input type="file" name="file"><br><br> <input type="submit" value="Upload">-->
 <!--</form>-->
-<p></p>
-<div id="drawing" style="width: 202px; height: 207px;"></div>
-<button onclick="imageDownload()">download</button>
-<button onclick="imageReset()">reset</button>
-<button onclick="imagePredict()">predict</button>
-<div id="prediction-container"></div>
+<div style="display: flex">
+    <div>
+        <div id="drawing" style="width: 202px; height: 207px;"></div>
+        <button onclick="imageDownload()">download</button>
+        <button onclick="imageReset()">reset</button>
+        <button onclick="imagePredict()">predict</button>
+        <button onclick="imageReRender()">knopko!</button>
+        <div id="prediction-container"></div>
+    </div>
+    <div id="re-render">
+        Что получила на вход нейросеть:
+        <p></p>
+
+    </div>
+
+</div>
 </body>
 <script src="jquery-3.3.1.js"></script>
 <script src="drawingboard.min.js"></script>
 <script src="tools.js"></script>
 
 <script>
-    let simpleDrawingBoard = new DrawingBoard.Board('drawing', {
+    var simpleDrawingBoard = new DrawingBoard.Board('drawing', {
         controls: false,
         webStorage: 'session',
         size: 10,
