@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class NetLoader {
 
-    private static final String basePath = System.getProperty("java.io.tmpdir") + "/mnist";
+    private static final String basePath = System.getProperty("user.home") + "/mnist";
 
     public static MultiLayerNetwork netLoad() throws IOException {
         File model = new File(basePath + "/minist-model.zip");

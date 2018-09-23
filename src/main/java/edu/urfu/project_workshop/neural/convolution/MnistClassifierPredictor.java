@@ -17,12 +17,13 @@ public class MnistClassifierPredictor {
     }
 
 
-    public String predictSingleImage(File file) throws IOException {
+    public int predictSingleImage(File file) throws IOException {
+
         NativeImageLoader loader = new NativeImageLoader(28, 28, 1, true);
         INDArray image = loader.asRowVector(file);
-        ImagePreProcessingScaler scaler = new ImagePreProcessingScaler(0, 1);
+        ImagePreProcessingScaler scaler = new ImagePreProcessingScaler(1, 0); //reverse for white-black images because model trained on black white date set
         scaler.transform(image);
 
-        return "Prediction: " + net.predict(image)[0];
+        return net.predict(image)[0];
     }
 }
