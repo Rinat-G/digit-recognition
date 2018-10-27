@@ -34,10 +34,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import static edu.urfu.project_workshop.common.Constants.TEMP_DIR;
+
 public class MnistClassifier {
     private static final Logger log = LoggerFactory.getLogger(MnistClassifier.class);
     private static final String basePath = System.getProperty("java.io.tmpdir") + "/mnist";
     private static final String dataUrl = "http://github.com/myleott/mnist_png/raw/master/mnist_png.tar.gz";
+
+    public static void main(String[] args) throws Exception {
+        run();
+    }
 
     public static void run() throws Exception {
         int height = 28;
@@ -136,7 +142,7 @@ public class MnistClassifier {
             testIter.reset();
         }
 
-        ModelSerializer.writeModel(net, new File(basePath + "/minist-model.zip"), true);
+        ModelSerializer.writeModel(net, new File(TEMP_DIR + "/mnist-model.zip"), true);
 
     }
 
