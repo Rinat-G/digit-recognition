@@ -1,32 +1,43 @@
 package edu.urfu.project_workshop.neural.convolution;
 
-import org.datavec.image.loader.NativeImageLoader;
-import org.datavec.image.transform.LargestBlobCropTransform;
+import edu.urfu.project_workshop.neural.transformer.ImagePreProcessor;
+import edu.urfu.project_workshop.neural.transformer.ImageTransformer;
+import edu.urfu.project_workshop.neural.util.NetLoader;
+import lombok.val;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
-import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 
-public class MnistClassifierPredictor {
+@Service
+public class MNISTClassifierPredictor {
     private MultiLayerNetwork net;
+    private ImageTransformer imageTransformer;
+    private ImagePreProcessor imagePreProcessor;
 
-    public MnistClassifierPredictor(MultiLayerNetwork net) {
+    @Autowired
+    public MNISTClassifierPredictor(final NetLoader netLoader,
+                                    final ImageTransformer imageTransformer,
+                                    final ImagePreProcessor imagePreProcessor) throws IOException {
 
-        this.net = net;
+        try {
+            this.net = netLoader.netLoad();
+            this.imageTransformer = imageTransformer;
+            this.imagePreProcessor = imagePreProcessor;
+        } catch (IOException e) {
+            throw new IOException("Не удалось загрузить модель", e);
+        }
     }
 
 
     public int predictSingleImage(File file) throws IOException {
-        LargestBlobCropTransform largestBlobCropTransform = new LargestBlobCropTransform();
 
-
-        NativeImageLoader loader = new NativeImageLoader(28, 28, 1, false);
-        INDArray image = loader.asRowVector(file);
-        ImagePreProcessingScaler scaler = new ImagePreProcessingScaler(1, 0); //reverse for white-black images because model trained on black white date set
-        scaler.transform(image);
-
-        return net.predict(image)[0];
+        val transformed = imageTransformer.transform(file);
+        imagePreProcessor.processAndPersistForPreview(transformed);
+        val imageRowed = imagePreProcessor.process(transformed);
+        return net.predict(imageRowed)[0];
     }
+
 }
