@@ -30,7 +30,7 @@ public class PredictorTest {
 //        MultiLayerNetwork net;
 //        net = NetLoader.netLoad();
 
-        File file = new File(TEMP_DIR + "drawn-2018-9-21-17.9.28.png");
+        File file = new File(TEMP_DIR + "drawn-2018-9-27-19.9.48.png");
 
         ShowImageTransform showImageTransform = new ShowImageTransform("title1", 1000000);
 

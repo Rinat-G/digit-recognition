@@ -12,6 +12,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
+@Deprecated
 @Controller
 public class UploadController {
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
@@ -38,7 +39,7 @@ public class UploadController {
 
                 BufferedOutputStream stream = new BufferedOutputStream(
                         new FileOutputStream(
-                                new File( fileName)));
+                                new File(fileName)));
                 stream.write(bytes);
                 stream.close();
                 return "Загружен файл: " + fileName;
@@ -50,7 +51,6 @@ public class UploadController {
             return "Не удалось загрузить файл  т.к. он пустой.";
         }
     }
-
 
 
 }
