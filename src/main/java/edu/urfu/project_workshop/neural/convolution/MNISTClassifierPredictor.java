@@ -27,7 +27,7 @@ public class MNISTClassifierPredictor {
             this.imageTransformer = imageTransformer;
             this.imagePreProcessor = imagePreProcessor;
         } catch (IOException e) {
-            throw new IOException("Не удалось загрузить модель", e);
+            throw new IOException("Can't load model", e);
         }
     }
 

@@ -35,6 +35,7 @@ import java.util.Map;
 import java.util.Random;
 
 import static edu.urfu.project_workshop.common.Constants.TEMP_DIR;
+import static edu.urfu.project_workshop.common.utils.FileUtils.newFileWithDirs;
 
 public class MnistClassifier {
     private static final Logger log = LoggerFactory.getLogger(MnistClassifier.class);
@@ -45,7 +46,7 @@ public class MnistClassifier {
         run();
     }
 
-    public static void run() throws Exception {
+    private static void run() throws Exception {
         int height = 28;
         int width = 28;
         int channels = 1; // single channel for grayscale images
@@ -142,7 +143,7 @@ public class MnistClassifier {
             testIter.reset();
         }
 
-        ModelSerializer.writeModel(net, new File(TEMP_DIR + "/mnist-model.zip"), true);
+        ModelSerializer.writeModel(net, newFileWithDirs(TEMP_DIR + "/mnist-model.zip"), true);
 
     }
 

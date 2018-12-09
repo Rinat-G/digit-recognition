@@ -3,24 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="drawingboard.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <title>File upload</title>
 
 </head>
-<body style="background: lightgrey">
-<!--<form method="POST" enctype="multipart/form-data"-->
-<!--action="/upload">-->
-<!--File to upload:-->
-<!--<br>-->
-<!--<input type="file" name="file"><br><br> <input type="submit" value="Upload">-->
-<!--</form>-->
+<body>
 <div style="display: flex">
-    <div>
-        <div id="drawing" style="width: 202px; height: 207px;"></div>
-        <button onclick="imageDownload()">download</button>
-        <button onclick="imageReset()">reset</button>
-        <button onclick="imagePredict()">predict</button>
-        <button onclick="imageReRender()">knopko!</button>
-        <button onclick="imagePredictAndRender()">Все вместе</button>
+    <div id="drawing">
+        <div id="drawing-canvas" style="width: 202px; height: 207px;"></div>
+        <!--<button onclick="imageDownload()">download</button>-->
+        <button onclick="imageReset()">Reset Image</button>
+        <button onclick="imagePredictAndRender()">Predict Image</button>
         <div id="prediction-container"></div>
     </div>
     <div id="re-render">
@@ -36,7 +29,7 @@
 <script src="tools.js"></script>
 
 <script>
-    var simpleDrawingBoard = new DrawingBoard.Board('drawing', {
+    let simpleDrawingBoard = new DrawingBoard.Board('drawing-canvas', {
         controls: false,
         webStorage: 'session',
         size: 10,

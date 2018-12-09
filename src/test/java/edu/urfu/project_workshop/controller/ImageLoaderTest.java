@@ -15,11 +15,10 @@ import static edu.urfu.project_workshop.common.Constants.TEMP_DIR;
 public class ImageLoaderTest {
 
 
-    @Test
+    @Test(enabled = false)
     public void loaderCropTest() throws IOException {
         File imgFile = new File(TEMP_DIR + "drawn-2018-8-23-18.41.55.png");
         NativeImageLoader loader = new NativeImageLoader(28, 28, 1, true);
-//        ImageWritable imageWritable = loader.asWritable(imgFile);
 
         INDArray imageArray = loader.asMatrix(imgFile);
 

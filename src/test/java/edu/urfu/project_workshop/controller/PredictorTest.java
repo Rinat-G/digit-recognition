@@ -24,7 +24,7 @@ import static java.lang.Math.round;
 
 public class PredictorTest {
 
-    @Test
+    @Test(enabled = false)
     public void predictor() throws IOException {
 
 //        MultiLayerNetwork net;

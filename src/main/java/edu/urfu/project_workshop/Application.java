@@ -13,14 +13,4 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
-//    @Bean
-//    MultipartConfigElement multipartConfigElement(){
-//        MultipartConfigFactory factory = new MultipartConfigFactory();
-//        factory.setMaxFileSize("1MB");
-//        factory.setMaxRequestSize("1MB");
-//        return factory.createMultipartConfig();
-//    }
-
-
 }

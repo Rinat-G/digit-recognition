@@ -19,7 +19,7 @@ import static org.bytedeco.javacpp.opencv_imgproc.THRESH_BINARY_INV;
 
 public class TestBoxing {
 
-    @Test
+    @Test(enabled = false)
     public void testBoxing() throws IOException {
         File file = new File(TEMP_DIR + "drawn-2018-9-27-19.9.48.png");
         BufferedImage bufferedImage = ImageIO.read(file);

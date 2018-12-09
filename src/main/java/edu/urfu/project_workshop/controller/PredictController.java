@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
-import java.io.IOException;
-
 @Controller
 public class PredictController {
 
@@ -20,26 +17,6 @@ public class PredictController {
     public PredictController(final ImagePersistService persistService, final MNISTClassifierPredictor predictor) {
         this.persistService = persistService;
         this.predictor = predictor;
-    }
-
-
-    @RequestMapping(value = "/predict", method = RequestMethod.GET)
-    @ResponseBody
-    public String predictNumber(
-            @RequestParam("name") String name
-    ) {
-        File file = new File(name);
-        if (file.exists()) {
-            try {
-                return "" + predictor.predictSingleImage(file);
-            } catch (IOException e) {
-                return "Ошибка: " + e.getMessage();
-            }
-        } else {
-            return "Файл с именем " + name + "не найден";
-        }
-
-
     }
 
     @CrossOrigin
@@ -53,7 +30,7 @@ public class PredictController {
 
         try {
             return "" + predictor.predictSingleImage(imageFile);
-        } catch (IOException e) {
+        } catch (Exception e) {
             return "Ошибка: " + e.getMessage();
         }
     }

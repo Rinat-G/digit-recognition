@@ -63,7 +63,11 @@ public class ImageTransformer {
 
         val resultMat = new opencv_core.Mat(matImage, rect);
 
-        return converter.convert(resultMat);
+        try {
+            return converter.convert(resultMat);
+        } catch (NullPointerException e) {
+            throw new RuntimeException("Пустое изображение!");
+        }
     }
 
     private Frame boxImage(final Frame input) {
