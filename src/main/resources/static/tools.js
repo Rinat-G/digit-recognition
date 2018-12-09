@@ -7,6 +7,7 @@ function imageReset() {
 }
 
 function imagePredictAndRender() {
+    const server = window.location.href;
     const imageB64 = simpleDrawingBoard.getImg();
     const form = new FormData();
     form.append("data", imageB64);
@@ -14,7 +15,7 @@ function imagePredictAndRender() {
     const settings1 = {
         "async": true,
         "crossDomain": false,
-        "url": "http://localhost:8080/predict",
+        "url": server + "/predict",
         "method": "POST",
         "processData": false,
         "contentType": false,
@@ -24,7 +25,7 @@ function imagePredictAndRender() {
     const settings2 = {
         "async": true,
         "crossDomain": false,
-        "url": "http://localhost:8080/preview",
+        "url": server + "/preview",
         "method": "POST",
         "processData": false,
         "contentType": false,
