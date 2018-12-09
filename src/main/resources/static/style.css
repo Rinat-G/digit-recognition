@@ -3,10 +3,11 @@ body{
 }
 #drawing{
     margin: 10px;
+    width: 300px;
 }
 #re-render{
     margin: 10px;
 }
 #prediction-container{
-    margin: 10px;
+
 }
