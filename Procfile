@@ -1,1 +1,1 @@
-web: java -jar target/digit-recognition-1.1-SNAPSHOT.jar
+web: java -jar -Dserver.port=$PORT target/digit-recognition-1.1-SNAPSHOT.jar
