@@ -34,6 +34,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>com.heroku.sdk</groupId>-->
+                <!--<artifactId>heroku-maven-plugin</artifactId>-->
+                <!--<version>2.0.6</version>-->
+                <!--<configuration>-->
+                    <!--<configVars>-->
+                        <!--<javacpp.platform>windows-x86_64</javacpp.platform>-->
+                        <!--<JAVA_OPTS>-Djavacpp.platform=windows-x86_64</JAVA_OPTS>-->
+                    <!--</configVars>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
@@ -103,13 +114,7 @@
         <dependency>
             <groupId>org.nd4j</groupId>
             <artifactId>nd4j-native-platform</artifactId>
-            <version>RELEASE</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>mkl-dnn:macosx-x86_64</artifactId>
-                    <groupId>org.bytedeco.javacpp-presets</groupId>
-                </exclusion>
-            </exclusions>
+            <version>1.0.0-beta3</version>
         </dependency>
         <!--logging-->
         <dependency>
