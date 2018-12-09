@@ -15,7 +15,7 @@ function imagePredictAndRender() {
     const settings1 = {
         "async": true,
         "crossDomain": false,
-        "url": server + "/predict",
+        "url": server + "predict",
         "method": "POST",
         "processData": false,
         "contentType": false,
@@ -25,7 +25,7 @@ function imagePredictAndRender() {
     const settings2 = {
         "async": true,
         "crossDomain": false,
-        "url": server + "/preview",
+        "url": server + "preview",
         "method": "POST",
         "processData": false,
         "contentType": false,
