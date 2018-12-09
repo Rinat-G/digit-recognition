@@ -24,14 +24,14 @@ public class PredictController {
     @ResponseBody
     public String predictPost(@RequestParam("data") String data, @RequestParam("name") String name) {
 
-        System.out.println("На /predict контроллер получены данные: " + data);
+        System.out.println("/predict controller got data: " + data);
 
         val imageFile = persistService.persistBase64ToFile(data, name);
 
         try {
             return "" + predictor.predictSingleImage(imageFile);
         } catch (Exception e) {
-            return "Ошибка: " + e.getMessage();
+            return "Got exception: " + e.getMessage();
         }
     }
 

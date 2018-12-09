@@ -36,7 +36,7 @@ public class ImagePersistService {
             e.printStackTrace();
         }
 
-        System.out.println("Получен файл: " + filePath);
+        System.out.println("File received: " + filePath);
         return new File(filePath);
     }
 
@@ -65,7 +65,7 @@ public class ImagePersistService {
         try {
             ImageIO.write(bufferedImage, "png", resultFile);
         } catch (IOException e) {
-            throw new RuntimeException("Невозможно записать файл" + resultFile.getPath(), e);
+            throw new RuntimeException("Can't write file" + resultFile.getPath(), e);
         }
         return resultFile;
     }

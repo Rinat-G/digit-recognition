@@ -1,0 +1,1 @@
+web: java -jar target/digit-recognition-1.1-SNAPSHOT.jar

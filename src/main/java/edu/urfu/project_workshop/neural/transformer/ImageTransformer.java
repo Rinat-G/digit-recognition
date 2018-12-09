@@ -66,7 +66,7 @@ public class ImageTransformer {
         try {
             return converter.convert(resultMat);
         } catch (NullPointerException e) {
-            throw new RuntimeException("Пустое изображение!");
+            throw new RuntimeException("Empty image!");
         }
     }
 

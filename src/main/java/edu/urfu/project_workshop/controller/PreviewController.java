@@ -18,12 +18,12 @@ public class PreviewController {
     @RequestMapping(value = "/preview", method = RequestMethod.POST)
     @ResponseBody
     public String previewPost(@RequestParam("name") String name) throws IOException, InterruptedException {
-        System.out.println("На /preview контроллер получены данные: " + name);
+        System.out.println("/preview controller got data: " + name);
         File file = new File(LOADED_DIR + name + ".png");
         int i = 0;
         while (!file.exists()) {
             if (i > 50) {
-                throw new RuntimeException("Файл превью недоступен");
+                throw new RuntimeException("Preview file is not available");
             }
             Thread.sleep(100);
             i++;
