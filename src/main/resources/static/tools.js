@@ -33,11 +33,9 @@ function imagePredictAndRender() {
         "data": form
     };
     $.ajax(settings1).done(function (response) {
-        console.log("Prediction:" + response);
-        document.getElementById("prediction-container").innerHTML = "Prediction:" + response;
+        document.getElementById("prediction-container").innerHTML = "Prediction result: " + response;
     });
     $.ajax(settings2).done(function (response) {
-        // console.log( + response);
         const image = new Image();
         image.src = "data:image/png;base64," + response;
         document.getElementById("re-render").appendChild(image);
