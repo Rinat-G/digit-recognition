@@ -43,7 +43,6 @@ public class MNISTClassifierPredictor {
         val imageRowed = imagePreProcessor.process(transformed);
         System.out.println(net.output(imageRowed));
         System.out.println(Arrays.toString(net.predict(imageRowed)));
-//        return net.predict(imageRowed)[0];
 
         return predict(imageRowed);
     }
